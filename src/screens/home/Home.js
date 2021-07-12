@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import './Home.css';
 import Header from '../../common/header/Header';
 import { withStyles } from '@material-ui/core/styles';
+import moviesData from '../../common/movieData';
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
+import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 
 const styles = theme => ({
     root: {
@@ -30,6 +34,14 @@ class Home extends Component{
                 <div className={classes.upcomingMoviesHeading}>
                     <span> Upcoming Movies </span>
                 </div>
+                <ImageList cols={5} className={classes.gridListUpcomingMovies}>
+                    {moviesData.map(movie =>(
+                        <ImageListItem key={movie.id}>
+                            <img src={movie.poster_url} alt={movie.title}/>
+                            <ImageListItemBar title={movie.title} />
+                        </ImageListItem>
+                    ))}
+                </ImageList>
             </div>
         );
     }
